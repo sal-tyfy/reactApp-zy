@@ -11,7 +11,7 @@ const AccessPage: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 100);
+    }, 3000);
   }, []);
   return (
     <PageContainer

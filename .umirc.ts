@@ -7,12 +7,12 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: '@umijs/max',
+    title: 'Int',
   },
   routes: [
     {
       path: '/',
-      redirect: '/algorithm',
+      redirect: '/algorithmInt',
     },
     {
       name: 'HooksInt',
@@ -31,8 +31,8 @@ export default defineConfig({
     },
     {
       name: 'AlgorithmInt',
-      path: '/algorithm',
-      component: './Algorithm',
+      path: '/algorithmInt',
+      component: './AlgorithmInt',
     },
     {
       name: 'TsInt',

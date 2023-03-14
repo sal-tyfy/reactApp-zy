@@ -29,6 +29,7 @@ export const getParsedResFromStr = (input: unknown) => {
   return parsedRes;
 };
 
+// 数组转字符串
 export const getArrayStr = (arr: unknown[]): string => {
   const res = `[${arr.toString()}]`;
   return res;

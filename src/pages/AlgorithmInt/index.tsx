@@ -4,6 +4,7 @@ import { Space } from 'antd';
 import { BinarySearchInt } from './components/BinarySearchInt';
 import { BubbleSortInt } from './components/BubbleSortInt';
 import { PrintBitInt } from './components/PrintBit';
+import { SelectSortInt } from './components/SelectSortInt';
 
 const questions = [
   {
@@ -14,8 +15,9 @@ const questions = [
 
 const AlgorithmCom = () => {
   return (
-    <PageContainer title="AlgorithmCom">
+    <PageContainer title="AlgorithmInt">
       <Space style={{ width: '100%' }} direction="vertical" size={24}>
+        <SelectSortInt />
         <PrintBitInt />
         <BubbleSortInt />
         <BinarySearchInt />
