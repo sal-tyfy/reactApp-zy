@@ -6,13 +6,19 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
-  layout: {
-    title: 'Int',
-  },
+  layout: {},
   routes: [
     {
       path: '/',
       redirect: '/algorithmInt',
+    },
+    {
+      name: 'login',
+      path: '/login',
+      component: './Login',
+      hideInMenu: true,
+      menuRender: false,
+      headerRender: false,
     },
     {
       name: 'HooksInt',
