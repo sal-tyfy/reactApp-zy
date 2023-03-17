@@ -13,6 +13,11 @@ export default defineConfig({
       redirect: '/algorithmInt',
     },
     {
+      name: 'MySqlInt',
+      path: '/mySqlInt',
+      component: './MySqlInt',
+    },
+    {
       name: 'login',
       path: '/login',
       component: './Login',

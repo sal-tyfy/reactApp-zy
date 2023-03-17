@@ -1,9 +1,9 @@
-import { DEV_HOST_NAME } from '@/constants/env';
+import { DEV_HOST_NAME_ARR } from './../constants/env';
 import { LOGIN_USER_KEY, LOGIN_USER_PASS } from './../constants/sessionStorage';
 
 // 是否是dev环境
 export const isDev = () => {
-  if (location.hostname === DEV_HOST_NAME) {
+  if (DEV_HOST_NAME_ARR.includes(location.hostname)) {
     return true;
   }
   return false;
