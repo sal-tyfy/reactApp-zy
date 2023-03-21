@@ -33,7 +33,7 @@ const QuestionList = () => {
     {
       manual: true,
       onSuccess: () => {
-        message.success('添加问题成功');
+        message.success('添加成功');
         tableRef.current?.reload();
       },
     },
@@ -41,14 +41,14 @@ const QuestionList = () => {
   const { run: updateQuestion, loading: updateQuestionLoading } = useRequest(
     async (params) => {
       await request('/api/admin/system/sysRole/update', {
-        method: 'post',
+        method: 'put',
         data: params,
       });
     },
     {
       manual: true,
       onSuccess: () => {
-        message.success('修改问题成功');
+        message.success('修改成功');
         tableRef.current?.reload();
       },
     },
@@ -62,7 +62,7 @@ const QuestionList = () => {
     {
       manual: true,
       onSuccess: () => {
-        message.success('删除问题成功');
+        message.success('删除成功');
         tableRef.current?.reload();
       },
     },
@@ -70,14 +70,14 @@ const QuestionList = () => {
   const { run: batchDeleteQuestion, loading: batchDeleteLoading } = useRequest(
     async (params) => {
       await request('/api/admin/system/sysRole/batchRemove', {
-        method: 'post',
+        method: 'delete',
         data: params,
       });
     },
     {
       manual: true,
       onSuccess: () => {
-        message.success('批量删除问题成功');
+        message.success('批量删除成功');
         setSelectedRowKeys([]);
         tableRef.current?.reload();
       },
@@ -100,13 +100,13 @@ const QuestionList = () => {
       width: 100,
     },
     {
-      title: '问题',
-      dataIndex: 'question',
+      title: '角色名称',
+      dataIndex: 'roleName',
       width: 300,
     },
     {
-      title: '回答',
-      dataIndex: 'answer',
+      title: '角色code',
+      dataIndex: 'roleCode',
       hideInSearch: true,
       width: 300,
     },
@@ -133,11 +133,7 @@ const QuestionList = () => {
               key="update"
               onClick={() => {
                 setModalType('UPDATE');
-                setInitialValues({
-                  question: record?.question,
-                  answer: record?.answer,
-                  id: record?.id,
-                });
+                setInitialValues(record);
                 setVisible(true);
               }}
             >
@@ -163,7 +159,7 @@ const QuestionList = () => {
     },
   ];
   return (
-    <PageContainer title="问题列表">
+    <PageContainer title="角色列表">
       <ProTable
         actionRef={tableRef}
         rowKey={'id'}
@@ -173,8 +169,8 @@ const QuestionList = () => {
           const res = await request(
             `/api/admin/system/sysRole/${params.current}/${params.pageSize}`,
             {
-              method: 'post',
-              query: {
+              method: 'get',
+              params: {
                 ...params,
               },
             },
@@ -238,7 +234,7 @@ const QuestionList = () => {
       />
       <Modal
         destroyOnClose
-        title="创建问题"
+        title="创建角色"
         open={visible}
         bodyStyle={{ paddingTop: 24, paddingBottom: 24 }}
         onCancel={() => {
@@ -269,16 +265,16 @@ const QuestionList = () => {
           }}
         >
           <Form.Item
-            name="question"
-            label="问题"
+            name="roleName"
+            label="角色名称"
             required
             rules={[{ required: true }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
-            name="answer"
-            label="回答"
+            name="roleCode"
+            label="角色code"
             required
             rules={[{ required: true }]}
           >

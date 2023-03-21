@@ -12,6 +12,16 @@ interface ResponseDataType {
 
 // 运行时配置
 export const request: RequestConfig = {
+  // 错误处理： umi@3 的错误处理方案。
+  errorConfig: {
+    // 错误抛出
+    errorThrower: (res) => {
+      const { success } = res;
+      if (!success) {
+        throw Promise.reject(); // 抛出自制的错误
+      }
+    },
+  },
   // 响应拦截器
   responseInterceptors: [
     (response) => {
