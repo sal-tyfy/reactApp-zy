@@ -5,7 +5,7 @@ export const routes = [
   },
   {
     path: '/admin',
-    redirect: '/admin/question',
+    redirect: '/admin/system/role',
   },
   {
     name: 'admin',
@@ -14,14 +14,34 @@ export const routes = [
     flatMenu: true,
     routes: [
       {
+        name: '系统管理',
+        path: '/admin/system',
+        routes: [
+          {
+            path: '/admin/system',
+            redirect: '/admin/system/role',
+          },
+          {
+            name: '角色管理',
+            path: '/admin/system/role',
+            component: './Admin/RoleList',
+          },
+          {
+            name: '用户管理',
+            path: '/admin/system/user',
+            component: './Admin/UserList',
+          },
+          {
+            name: '菜单管理',
+            path: '/admin/system/menu',
+            component: './Admin/MenuList',
+          },
+        ],
+      },
+      {
         name: '问题列表',
         path: '/admin/question',
         component: './Admin/QuestionList',
-      },
-      {
-        name: '角色管理',
-        path: '/admin/role',
-        component: './Admin/RoleList',
       },
     ],
   },

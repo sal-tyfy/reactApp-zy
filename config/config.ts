@@ -10,6 +10,12 @@ export default defineConfig({
   layout: {},
   routes: routes,
   npmClient: 'yarn',
+  locale: {
+    default: 'zh-CN',
+    baseSeparator: '-',
+    antd: true,
+    baseNavigator: false,
+  },
   proxy: {
     '/api': {
       target: 'http://localhost:8080',
